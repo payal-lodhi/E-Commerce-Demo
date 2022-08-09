@@ -16,7 +16,7 @@ const Header = () => {
     }
     return (
         <>
-            <Navbar bg="dark" variant="dark" id="templatemo_nav_top">
+            <Navbar bg="dark" variant="dark" className="templatemo_nav_top">
                 <Container>
                     <div className="w-100 d-flex justify-content-between">
                         <div>
@@ -26,9 +26,9 @@ const Header = () => {
                             <a className="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
                         </div>
                         <div>
-                            <FaFacebookF style={iconStyle} />
-                            <BsInstagram style={iconStyle} />
-                            <FiTwitter style={iconStyle} />
+                            <FaFacebookF style={iconStyle} /> 
+                            <BsInstagram style={iconStyle} /> 
+                            <FiTwitter style={iconStyle} /> 
                             <FiLinkedin style={iconStyle} />
                         </div>
                     </div>
