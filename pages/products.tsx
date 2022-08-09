@@ -1,7 +1,6 @@
 import React from "react";
 import { ProductsState } from "../context/Context";
 import { ProductCard } from "../components/ProductCard";
-import { Container, Row, Col } from "react-bootstrap";
 import { ProductListComponent } from "../components/app.style";
 import Layout from "../components/Layout";
 

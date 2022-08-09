@@ -9,7 +9,7 @@ import {
   MutedStarIcon,
   OverlayButton,
 } from "./ProductCard.sytle";
-import { FaShoppingCart, FaEye, FaHeart } from "react-icons/all";
+import { FaShoppingCart, FaEye, FaHeart } from "react-icons/fa";
 
 interface ICardProps {
   product: IProduct;

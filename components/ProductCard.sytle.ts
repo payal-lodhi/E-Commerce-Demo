@@ -1,7 +1,6 @@
 import { Card } from "react-bootstrap";
 import styled from "styled-components";
-import {FaStar} from "react-icons/all";
-import Link from "next/link"
+import {FaStar} from "react-icons/fa";
 
 export const StyledCard = styled(Card)`
     margin-bottom: 1.5rem!important;
