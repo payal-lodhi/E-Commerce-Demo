@@ -1,10 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.css'
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-
+import "bootstrap/dist/css/bootstrap.css";
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import Context from "../context/Context";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <Context>
+      <>
+        <Component {...pageProps} />
+      </>
+    </Context>
+  );
 }
 
-export default MyApp
+export default MyApp;
