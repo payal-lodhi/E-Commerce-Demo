@@ -7,10 +7,14 @@ import React, {
   useState,
 } from "react";
 
-const initialState = {
-  products: [],
-  cart: [],
-};
+import {rootReducer, initialState} from "./Reducer";
+import {IProduct} from "../interface/product"
+
+
+// const initialState = {
+//   products: [],
+//   cart: [],
+// };
 
 const Products = createContext(initialState);
 
@@ -26,26 +30,38 @@ interface IAppGlobalState {
 const Context: React.FC<IContextProps> = ({ children }): React.ReactElement => {
   const ProductStateProvider = Products.Provider;
   const [products, setProducts] = useState([]);
+  var test:any =[];
+
+  const [state, dispatch] = useReducer(rootReducer, {
+    products,
+    cart:[]
+  })
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((response) => setProducts(response));
+      .then((response) => { 
+        setProducts(response)
+        dispatch({ type:'SET_PRODUCTS_DATA', payload:response})
+        
+      })
+      
   }, []);
 
-  const data = {
-    products: products,
-    cart: [],
-  };
 
-  // const [state, dispatch] = useReducer(rootReducer, {
-  //     products:products,
-  //     cart:[]
-  // })
+  // const data = {
+  //   products: products,
+  //   cart: [],
+  // };
+  
+
+  
+
+  //console.log('**** products ', products, state, test)
 
   return (
     <ProductStateProvider
-      value={data}
+      value={{state, dispatch}}
     >{children}</ProductStateProvider>
   );
 };
