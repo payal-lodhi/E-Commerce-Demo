@@ -1,9 +1,13 @@
 import Layout from "../components/Layout";
+import Container from 'react-bootstrap/Container';
+
 const About = () => {
     return (
         <>
             <Layout>
-                <h2>This is About page</h2>
+                <Container>
+                    <h2>This is About page</h2>
+                </Container>
             </Layout>
         </>
     )
