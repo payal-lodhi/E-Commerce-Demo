@@ -1,14 +1,17 @@
-
+import Link from "next/link";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import { FaFacebookF } from 'react-icons/Fa';
 import { BsInstagram } from 'react-icons/bs';
 import { FiTwitter, FiLinkedin } from 'react-icons/fi';
+
+
 const Footer = () => {
     return (
         <>
             <footer className="bg-dark" id="tempaltemo_footer">
-                <div className="container">
-                    <div className="row">
-
+                <Container>
+                    <Row>
                         <div className="col-md-4 pt-5">
                             <h2 className="h2 text-success border-bottom pb-3 border-light logo">PS Shop</h2>
                             <ul className="list-unstyled text-light footer-link-list">
@@ -18,11 +21,11 @@ const Footer = () => {
                                 </li>
                                 <li>
                                     <i className="fa fa-phone fa-fw"></i>
-                                    <a className="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                                    <a className="text-decoration-none" href="tel:010-020-0340">010-020-00000</a>
                                 </li>
                                 <li>
                                     <i className="fa fa-envelope fa-fw"></i>
-                                    <a className="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                                    <a className="text-decoration-none" href="mailto:info@company.com">info@ps.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -40,13 +43,25 @@ const Footer = () => {
                         <div className="col-md-4 pt-5">
                             <h2 className="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
                             <ul className="list-unstyled text-light footer-link-list">
-                                <li><a className="text-decoration-none" href="#">Home</a></li>
-                                <li><a className="text-decoration-none" href="#">About Us</a></li>
-                                <li><a className="text-decoration-none" href="#">Shop Locations</a></li>
+                                <li><Link href='/'>
+                                    <a className="text-decoration-none">
+                                        Home
+                                    </a>
+                                </Link></li>
+                                <li><Link href='/about'>
+                                    <a className="text-decoration-none">
+                                        About Us
+                                    </a>
+                                </Link></li>
+                                <li><Link href='/contact'>
+                                    <a className="text-decoration-none">
+                                        Contact
+                                    </a>
+                                </Link></li>
                             </ul>
                         </div>
 
-                    </div>
+                    </Row>
 
                     <div className="row text-light mb-4">
                         <div className="col-12 mb-3">
@@ -76,18 +91,18 @@ const Footer = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </Container>
 
                 <div className="w-100 bg-black py-3">
-                    <div className="container">
-                        <div className="row pt-2">
+                    <Container>
+                        <Row className="pt-2">
                             <div className="col-12">
                                 <p className="text-left text-light">
                                     Copyright © 2021 PS
                                 </p>
                             </div>
-                        </div>
-                    </div>
+                        </Row>
+                    </Container>
                 </div>
 
             </footer>

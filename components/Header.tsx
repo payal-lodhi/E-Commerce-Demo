@@ -12,23 +12,25 @@ import { FiTwitter, FiLinkedin } from 'react-icons/fi';
 
 const Header = () => {
     const iconStyle = {
-        color: "white"
+        color: "white",
+        marginRight: ".2rem",
+        marginLeft: ".2rem"
     }
     return (
         <>
-            <Navbar bg="dark" variant="dark" className="templatemo_nav_top">
+            <Navbar bg="dark" variant="dark" id="templatemo_nav_top">
                 <Container>
                     <div className="w-100 d-flex justify-content-between">
                         <div>
                             <AiTwotoneMail style={iconStyle} />
-                            <a className="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@company.com</a>
+                            <a className="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">info@ps.com</a>
                             <MdCall style={iconStyle} />
-                            <a className="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
+                            <a className="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">010-020-00000</a>
                         </div>
                         <div>
-                            <FaFacebookF style={iconStyle} /> 
-                            <BsInstagram style={iconStyle} /> 
-                            <FiTwitter style={iconStyle} /> 
+                            <FaFacebookF style={iconStyle} />
+                            <BsInstagram style={iconStyle} />
+                            <FiTwitter style={iconStyle} />
                             <FiLinkedin style={iconStyle} />
                         </div>
                     </div>
@@ -44,10 +46,10 @@ const Header = () => {
                         </Link></Navbar.Brand>
                         <div className="flex-fill">
                             <Nav className="justify-content-between mx-lg-auto">
-                                <Nav.Link href="/">Home</Nav.Link>
-                                <Nav.Link href="/products">Products</Nav.Link>
-                                <Nav.Link href="/about">About</Nav.Link>
-                                <Nav.Link href="/contact">Contact</Nav.Link>
+                                <Link href="/"><a className="nav-link">Home</a></Link>
+                                <Link href="/products"><a className="nav-link">Products</a></Link>
+                                <Link href="/about"><a className="nav-link">About</a></Link>
+                                <Link href="/contact"><a className="nav-link">Contact</a></Link>
                             </Nav>
                         </div>
                         <div className="navbar align-self-center d-flex">

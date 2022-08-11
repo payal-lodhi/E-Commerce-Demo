@@ -1,9 +1,12 @@
 import Layout from "../components/Layout";
+import Container from 'react-bootstrap/Container';
 const Contact = () => {
     return (
         <>
             <Layout>
-                <h2>This is Contact page</h2>
+                <Container>
+                    <h2>This is Contact page</h2>
+                </Container>
             </Layout>
         </>
     )
