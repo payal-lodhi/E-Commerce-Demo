@@ -7,12 +7,13 @@ import React, {
   useState,
 } from "react";
 
-import {rootReducer, initialState} from "./Reducer";
-import {IProduct} from "../interface/product"
-
+import { rootReducer, initialState } from "./Reducer";
+import { IProduct } from "../interface/product";
 
 // const initialState = {
 //   products: [],
+//   categories: [],
+//   featuredProducts: [],
 //   cart: [],
 // };
 
@@ -23,46 +24,49 @@ interface IContextProps {
 }
 
 interface IAppGlobalState {
-    products:any;
-    cart:any;
+  products: any;
+  cart: any;
 }
 
 const Context: React.FC<IContextProps> = ({ children }): React.ReactElement => {
   const ProductStateProvider = Products.Provider;
   const [products, setProducts] = useState([]);
-  var test:any =[];
-
   const [state, dispatch] = useReducer(rootReducer, {
     products,
-    cart:[]
-  })
+    cart: [],
+  });
+  const [categories, setCategories] = useState([]);
+  const [featuredProducts, setfeaturedProducts] = useState([]);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((response) => response.json())
-      .then((response) => { 
-        setProducts(response)
-        dispatch({ type:'SET_PRODUCTS_DATA', payload:response})
-        
-      })
-      
+
+      .then((response) => {
+        setProducts(response);
+        dispatch({ type: "SET_PRODUCTS_DATA", payload: response });
+      });
+
+    fetch("https://fakestoreapi.com/products/categories")
+      .then((response) => response.json())
+      .then((response) => setCategories(response));
+
+    fetch("https://fakestoreapi.com/products?limit=4")
+      .then((response) => response.json())
+      .then((response) => setfeaturedProducts(response));
   }, []);
 
-
-  // const data = {
-  //   products: products,
-  //   cart: [],
-  // };
-  
-
-  
-
-  //console.log('**** products ', products, state, test)
+  const data = {
+    //products: products,
+    categories: categories,
+    featuredProducts: featuredProducts,
+    cart: [],
+  };
 
   return (
-    <ProductStateProvider
-      value={{state, dispatch}}
-    >{children}</ProductStateProvider>
+    <ProductStateProvider value={{ state, dispatch }}>
+      {children}
+    </ProductStateProvider>
   );
 };
 

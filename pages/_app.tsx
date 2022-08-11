@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "../styles/globals.css";
+import "../styles/templatemo.css";
 import type { AppProps } from "next/app";
 import Context from "../context/Context";
 import Layout from "../components/Layout";

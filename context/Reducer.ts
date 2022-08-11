@@ -1,12 +1,6 @@
 import React from "react";
 import { IProduct } from "../interface/product"
 
-// will need for filters and add cart functionalities
-// export const rootReducer = () =>{
-//     switch(Selection.type){
-//         case
-//     }
-// }
 
 interface IAction {
     type: string;
@@ -22,7 +16,10 @@ interface IInitialState {
 export const initialState: any = {
     products: [],
     allProducts: [],
-    cart: []
+    cart: [],
+    categories: [],
+    featuredProducts: []
+
 }
 export const rootReducer = (state = initialState, action: IAction) => {
     console.log(' state in the root reducer ', state, action)
@@ -80,9 +77,6 @@ export const rootReducer = (state = initialState, action: IAction) => {
                 ...state,
                 products: state.products.sort((a: IProduct, b: IProduct) => b.price - a.price)
             }
-
-
-
 
         case 'GET_PRODUCTS_DATA':
             return state

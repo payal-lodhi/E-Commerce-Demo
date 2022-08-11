@@ -1,16 +1,19 @@
 import type { NextPage } from 'next'
+import Container from 'react-bootstrap/Container';
 import Layout from '../components/Layout'
 import Slider from "../components/Slider";
-import { MainContainer } from "../styles/globel.style";
+import OfferingProduct from "../components/OfferingProduct"
+import FeaturedProduct from "../components/FeaturedProduct"
 
 const Home: NextPage = () => {
   return (
     <>
       <Layout>
         <Slider />
-        <MainContainer>
-          <h1>Hi This is my home page </h1>
-        </MainContainer>
+        <Container>
+          <OfferingProduct />
+        </Container>
+        <FeaturedProduct />
       </Layout>
     </>
   )
