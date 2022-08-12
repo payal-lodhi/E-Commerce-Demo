@@ -7,12 +7,11 @@ import { FaRupeeSign } from "react-icons/fa"
 import { MdStarRate } from "react-icons/md"
 
 const FeaturedProduct = () => {
-    const { featuredProducts } = ProductsState();
-
-    console.log(featuredProducts);
+    const { state, dispatch } = ProductsState();
+    const { featuredProducts } = state ? state : [];
 
     const imgHeight = {
-        maxHeight:'240px'
+        maxHeight: '240px'
     }
 
     return (
@@ -30,7 +29,7 @@ const FeaturedProduct = () => {
                     </Row>
                     <Row>
                         {
-                            featuredProducts ? featuredProducts.map((item: any, index) => <div className="col-12 col-md-3 mb-4" key={index}>
+                            featuredProducts ? featuredProducts.map((item: any, index: number) => <div className="col-12 col-md-3 mb-4" key={index}>
                                 <div className="card h-100">
                                     <Link href="/products"><a>
                                         <img src={item.image} className="card-img-top" style={imgHeight} alt="..." />
@@ -61,7 +60,7 @@ const FeaturedProduct = () => {
                                         <p className="card-text">
                                             {item.description.substring(0, 100)}...
                                         </p>
-                                     </div>
+                                    </div>
                                 </div>
                             </div>
 

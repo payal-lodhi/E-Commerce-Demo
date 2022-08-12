@@ -21,8 +21,8 @@ export const initialState: any = {
     featuredProducts: []
 
 }
-export const rootReducer = (state = initialState, action: IAction) => {
-    console.log(' state in the root reducer ', state, action)
+export const productsReducer = (state = initialState, action: IAction) => {
+    console.log('product state in the root reducer ', state, action)
     switch (action.type) {
         case 'FILTER_BY_MEN':
             return {
@@ -87,3 +87,25 @@ export const rootReducer = (state = initialState, action: IAction) => {
     }
 
 }
+
+
+export const homeReducer = (state = initialState, action: IAction) => {
+    console.log('home state in the root reducer ', state, action)
+    switch (action.type) {
+        case 'GET_ALL_CATEGORY':
+            return {
+                ...state,
+                categories: action.payload
+            }
+
+        case 'GET_ALL_FEATURED_PRODUCTS':
+            return {
+                ...state,
+                featuredProducts: action.payload
+            }
+
+        default: return state
+    }
+
+}
+

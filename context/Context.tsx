@@ -7,8 +7,7 @@ import React, {
   useState,
 } from "react";
 
-import { rootReducer, initialState } from "./Reducer";
-import { IProduct } from "../interface/product";
+import { productsReducer, homeReducer, initialState } from "./Reducer";
 
 // const initialState = {
 //   products: [],
@@ -28,13 +27,21 @@ interface IAppGlobalState {
   cart: any;
 }
 
+const combineReducers = (...reducers: any) => (state: any, action: any) => {
+  for (let i = 0; i < reducers.length; i++) state = reducers[i](state, action);
+  return state;
+};
+
+
 const Context: React.FC<IContextProps> = ({ children }): React.ReactElement => {
+  const [state, dispatch] = useReducer(combineReducers(productsReducer, homeReducer), initialState);
   const ProductStateProvider = Products.Provider;
   const [products, setProducts] = useState([]);
-  const [state, dispatch] = useReducer(rootReducer, {
-    products,
-    cart: [],
-  });
+  // const [state, dispatch] = useReducer(productsReducer, {
+  //   products,
+  //   cart: [],
+  // });
+
   const [categories, setCategories] = useState([]);
   const [featuredProducts, setfeaturedProducts] = useState([]);
 
@@ -49,11 +56,18 @@ const Context: React.FC<IContextProps> = ({ children }): React.ReactElement => {
 
     fetch("https://fakestoreapi.com/products/categories")
       .then((response) => response.json())
-      .then((response) => setCategories(response));
+      .then((response) => {
+        setCategories(response);
+        dispatch({ type: "GET_ALL_CATEGORY", payload: response });
+      });
 
     fetch("https://fakestoreapi.com/products?limit=4")
       .then((response) => response.json())
-      .then((response) => setfeaturedProducts(response));
+      .then((response) => {
+        setfeaturedProducts(response);
+        dispatch({ type: "GET_ALL_FEATURED_PRODUCTS", payload: response });
+      });
+    // .then((response) => setfeaturedProducts(response));
   }, []);
 
   const data = {
