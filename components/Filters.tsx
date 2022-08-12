@@ -12,9 +12,9 @@ export const FilterComponent: React.FC = (): React.ReactElement => {
         })
     }
   return (
-    <div className="col-lg-3">
+    <div className="col-lg-3" style={{padding:'20px'}}>
       <h1 className="h2 pb-4">Categories</h1>
-      <Accordion >
+      <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>Gender</Accordion.Header>
           <Accordion.Body>
