@@ -5,7 +5,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 const OfferingProduct = () => {
-    const { categories } = ProductsState();
+    const { state, dispatch } = ProductsState();
+    const { categories } = state ? state : [];
 
     const imgStyle = {
         width: "200px",
@@ -33,7 +34,7 @@ const OfferingProduct = () => {
                 </Row>
                 <Row>
                     {categories ? (
-                        categories.map((itemName, index) => <div className="col-12 col-md-3 col-sm-6 p-3 mt-3 d-flex  flex-column align-items-center" key={index}>
+                        categories.map((itemName: any, index: number) => <div className="col-12 col-md-3 col-sm-6 p-3 mt-3 d-flex  flex-column align-items-center" key={index}>
                             <img src={ImagesUrls[index]} style={imgStyle} className="rounded-circle img-fluid border" />
                             <h5 className="text-center mt-3 mb-3">{itemName}</h5>
                             <p className="text-center"><Link href="/products"><Button variant="success">Go Shop</Button></Link></p>
