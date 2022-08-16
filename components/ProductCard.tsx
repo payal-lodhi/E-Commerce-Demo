@@ -23,21 +23,21 @@ export const ProductCard: React.FC<ICardProps> = ({
       <div className="card rounded-0">
         <StyledCardImage src={product.image} />
         <StyledCardOverlay className="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-          <ul className="list-unstyled">
+          <ul className="list-unstyled" >
             <li>
-              <Link href="/">
+              <Link href={`/productDetail/${product.id}`}>
                 <OverlayButton>
                   <FaHeart />
                 </OverlayButton>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href={`/productDetail/${product.id}`}>
                 <OverlayButton><FaEye /></OverlayButton>
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href={`/productDetail/${product.id}`}>
                 <OverlayButton>
                   <FaShoppingCart />
                 </OverlayButton>

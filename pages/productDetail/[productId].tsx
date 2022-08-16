@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { useRouter } from "next/router";
 // import {ProductDetailCard} from "../components/productDetail.style"
 
 import styled from "styled-components";
@@ -11,6 +12,9 @@ const ProductDetailCard = styled(Card)`
 `;
 
 function productDetails() {
+  const router = useRouter();
+  const productId = router.query.productId;
+  console.log(`*** product id  ${productId}`);
   const stylebutton = {};
   return (
     <div>
@@ -85,7 +89,7 @@ function productDetails() {
 
                       {/* 
                                 <!--Second slide--> */}
-                      {/* <div className="carousel-item">
+                    {/* <div className="carousel-item">
                         <div className="row">
                           <div className="col-4">
                             <a href="#">
@@ -118,7 +122,7 @@ function productDetails() {
                       </div>
 
                       {/* <!--Third slide--> */}
-                      {/* <div className="carousel-item">
+                    {/* <div className="carousel-item">
                         <div className="row">
                           <div className="col-4">
                             <a href="#">
@@ -149,7 +153,7 @@ function productDetails() {
                           </div>
                         </div>
                       </div>
-                    </Carousel> */} 
+                    </Carousel> */}
                   </div>
                 </div>
 
