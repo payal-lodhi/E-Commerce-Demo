@@ -22,7 +22,6 @@ export const initialState: any = {
 
 }
 export const productsReducer = (state = initialState, action: IAction) => {
-    console.log('product state in the root reducer ', state, action)
     switch (action.type) {
         case 'FILTER_BY_MEN':
             return {
@@ -107,5 +106,23 @@ export const homeReducer = (state = initialState, action: IAction) => {
         default: return state
     }
 
+}
+
+export const cartReducer = (state = initialState, action: IAction) =>{
+   switch(action.type){
+    case 'ADD_TO_CART':
+        return{
+          ...state,
+          cart:state.cart.push(action.payload)
+        }
+    case 'REMOVE_FROM_CART':
+        return {
+            ...state,
+            cart: state.cart.filter((data:IProduct)=> data.id!==action.payload)
+        }
+
+        default: return state
+   }
+   
 }
 

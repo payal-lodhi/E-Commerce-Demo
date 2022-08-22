@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 
-import { productsReducer, homeReducer, initialState } from "./Reducer";
+import { productsReducer, homeReducer, initialState, cartReducer } from "./Reducer";
 
 // const initialState = {
 //   products: [],
@@ -34,7 +34,7 @@ const combineReducers = (...reducers: any) => (state: any, action: any) => {
 
 
 const Context: React.FC<IContextProps> = ({ children }): React.ReactElement => {
-  const [state, dispatch] = useReducer(combineReducers(productsReducer, homeReducer), initialState);
+  const [state, dispatch] = useReducer(combineReducers(productsReducer, homeReducer, cartReducer), initialState);
   const ProductStateProvider = Products.Provider;
   const [products, setProducts] = useState([]);
   // const [state, dispatch] = useReducer(productsReducer, {
