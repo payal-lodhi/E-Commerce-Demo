@@ -89,7 +89,7 @@ export const productsReducer = (state = initialState, action: IAction) => {
 
 
 export const homeReducer = (state = initialState, action: IAction) => {
-    console.log('home state in the root reducer ', state, action)
+    // console.log('home state in the root reducer ', state, action)
     switch (action.type) {
         case 'GET_ALL_CATEGORY':
             return {
@@ -109,11 +109,13 @@ export const homeReducer = (state = initialState, action: IAction) => {
 }
 
 export const cartReducer = (state = initialState, action: IAction) =>{
+   
    switch(action.type){
     case 'ADD_TO_CART':
+        console.log('Case Match', state.cart, action)
         return{
           ...state,
-          cart:state.cart.push(action.payload)
+          cart: action.payload
         }
     case 'REMOVE_FROM_CART':
         return {

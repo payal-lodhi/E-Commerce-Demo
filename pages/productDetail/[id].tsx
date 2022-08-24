@@ -1,5 +1,10 @@
-import { useState } from "react";
-import {FilledStarIcon,MutedStarIcon} from "../../components/ProductCard.sytle";
+import React, { useState } from "react";
+import {
+  FilledStarIcon,
+  MutedStarIcon,
+} from "../../components/ProductCard.sytle";
+import { ProductsState } from "../../context/Context";
+import { IProduct } from "../../interface/product";
 
 export const getStaticPaths = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
@@ -25,19 +30,39 @@ export const getStaticProps = async (context: { params: { id: any } }) => {
     props: { productDetail: data },
   };
 };
-const ProductDetails = ({ productDetail }) => {
+
+interface IProductDetailsProps {
+  productDetail: IProduct;
+}
+
+const ProductDetails: React.FC<IProductDetailsProps> = ({
+  productDetail,
+}): React.ReactElement => {
   const [counter, setCounter] = useState(1);
-  console.log(productDetail.rating.rate)
+  //console.log(productDetail.rating.rate)
+
+  const { state, dispatch } = ProductsState();
+
+  const { cart } = state;
+
+  const addProductToCart = (): void => {
+    console.log("***** in the addProductToCart", productDetail);
+    cart.push(productDetail);
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: cart,
+    });
+  };
+
+  console.log("state ", state);
   return (
-    
     <section className="bg-light">
-      
       <div className="container pb-5">
         <div className="row">
           <div className="col-lg-5 mt-5">
             <div className="card mb-3">
               <img
-               className="mx-auto d-block"
+                className="mx-auto d-block"
                 src={productDetail.image}
                 alt={productDetail.title}
                 height="500px"
@@ -51,7 +76,6 @@ const ProductDetails = ({ productDetail }) => {
                 <h1 className="h2">Active Wear</h1>
                 <p className="h3 py-2">${productDetail.price}</p>
                 <ul className="list-unstyled d-flex justify-content-between">
-               
                   <div className="text-center mb-0">
                     {[...Array(5)].map((data, index) =>
                       index < Math.floor(productDetail.rating.rate) ? (
@@ -94,7 +118,7 @@ const ProductDetails = ({ productDetail }) => {
                   <li>Dolore magna aliqua</li>
                 </ul>
 
-                <form action="" method="GET">
+                <>
                   <div className="row">
                     <div className="col-auto">
                       <ul className="list-inline pb-3">
@@ -183,16 +207,18 @@ const ProductDetails = ({ productDetail }) => {
                     </div>
                     <div className="col d-grid">
                       <button
-                        type="submit"
+                        //type="submit"
                         className="btn btn-success btn-lg"
-                        name="submit"
-                        value="addtocard"
+                        //name="submit"
+                        //value="addtocard"
+                        disabled={cart.find((data:IProduct)=>data.id === productDetail.id)}
+                        onClick={addProductToCart}
                       >
                         Add To Cart
                       </button>
                     </div>
                   </div>
-                </form>
+                </>
               </div>
             </div>
           </div>
